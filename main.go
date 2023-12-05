@@ -17,6 +17,7 @@ func main() {
 
 	r.Use(gin.Recovery())
 	r.Use(middleware.AccessLogger)
+	r.Use(middleware.Marius)
 
 	health.HealthSetup(r)
 

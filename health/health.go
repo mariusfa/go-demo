@@ -5,7 +5,12 @@ import (
 )
 
 func getHealth(c *gin.Context) {
-	c.String(200, "ok")
+	user, exists := c.Get("user")
+	if !exists {
+		c.String(500, "user not found")
+		return
+	}
+	c.String(200, "ok %s", user)
 }
 
 func HealthSetup(r *gin.Engine) {
